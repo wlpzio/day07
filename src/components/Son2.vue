@@ -2,15 +2,28 @@
   <div class="box">
     <h2>Son2 子组件</h2>
     从vuex中获取的值:
-    <label></label>
-    <br />
-    <button>值 - 1</button>
+    <label>{{ count }}</label>
+    <br/>
+    <button @click="handleSub">值 - 1</button>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'Son2Com'
+  name: 'Son2Com',
+  computed: {
+    ...mapState(['count'])
+  },
+  created () {
+    console.log(this.$store.state.count)
+  },
+  methods: {
+    handleSub () {
+      console.log(this.$store.state.count)
+    }
+  }
 }
 </script>
 
@@ -21,6 +34,7 @@ export default {
   padding: 10px;
   margin: 20px;
 }
+
 h2 {
   margin-top: 10px;
 }

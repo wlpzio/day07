@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <h1>根组件
-      - {{ $store.state.title }}
-      - {{ $store.state.count }}
+      - {{ title }}
+      - {{ count }}
     </h1>
-    <input type="text" />
+    <input type="text"/>
     <Son1></Son1>
-    <hr />
+    <hr/>
     <Son2></Son2>
   </div>
 </template>
@@ -14,9 +14,15 @@
 <script>
 import Son1 from './components/Son1.vue'
 import Son2 from './components/Son2.vue'
+import { mapState } from 'vuex'
+
+// console.log(mapState(['count', 'title']))
 
 export default {
   name: 'app',
+  computed: {
+    ...mapState(['count', 'title'])
+  },
   data: function () {
     return {}
   },
