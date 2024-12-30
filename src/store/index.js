@@ -24,11 +24,14 @@ const store = new Vuex.Store({
     // addFive (state) {
     //   state.count += 5
     // },
-    changeTitle (state, newtitle) {
-      state.title = newtitle
+    changeTitle (state, newTitle) {
+      state.title = newTitle
     },
     subCount (state, n) {
       state.count -= n
+    },
+    changeCount (state, newCount) {
+      state.count = newCount
     }
   }
 })

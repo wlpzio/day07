@@ -4,7 +4,7 @@
       - {{ title }}
       - {{ count }}
     </h1>
-    <input type="text"/>
+    <input type="text" :value="count" @input="handleInput"/>
     <Son1></Son1>
     <hr/>
     <Son2></Son2>
@@ -33,6 +33,14 @@ export default {
   created () {
     // console.log(this.$router)
     console.log(this.$store)
+  },
+  methods: {
+    handleInput (e) {
+      //   1.实时获取输入框的值
+      const num = +e.target.value
+      // 2.提交mutaitions，调用mutation函数
+      this.$store.commit('changeCount', num)
+    }
   }
 }
 </script>
