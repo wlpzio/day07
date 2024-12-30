@@ -1,6 +1,8 @@
 // 存放vuex相关的核心代码
 import Vue from 'vue'
 import Vuex from 'vuex'
+import user from './modules/user'
+import setting from './modules/setting'
 
 // 插件安装
 Vue.use(Vuex)
@@ -12,7 +14,8 @@ const store = new Vuex.Store({
   // 通过state提供数据
   state: {
     title: '仓库大标题',
-    count: 100
+    count: 100,
+    list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   // 2.通过mutations可以提供修改数据的方法
   mutations: {
@@ -44,6 +47,19 @@ const store = new Vuex.Store({
         context.commit('changeCount', num)
       }, 1000)
     }
+  },
+  // getters 类似于计算属性,但是不能set，修改必须要mutaitions
+  // 注意：形参第一个参数就是state
+  // 必须又返回值，返回值就是getters的值
+  getters: {
+    filterList (state) {
+      return state.list.filter(item => item > 5)
+    }
+  },
+  // 5.modules模块
+  modules: {
+    user,
+    setting
   }
 })
 

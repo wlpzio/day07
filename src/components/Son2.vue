@@ -9,6 +9,12 @@
     <button @click="handleSub(10)">值 - 10</button>
     <button @click="changeCountAction(888)">一秒后改成888</button>
     <button @click="changeTitle('xxxx')">改标题</button>
+
+    <hr>
+    <div>{{user.userInfo.name}}</div>
+    <div>{{setting.theme}}</div>
+    <div>{{userInfo.name}}</div>
+    <div>{{theme}}-{{desc}}</div>
   </div>
 </template>
 
@@ -18,7 +24,9 @@ import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   name: 'Son2Com',
   computed: {
-    ...mapState(['count'])
+    ...mapState(['count', 'user', 'setting']),
+    ...mapState('user', ['userInfo']),
+    ...mapState('setting', ['theme', 'desc'])
   },
   created () {
     console.log(this.$store.state.count)
@@ -29,6 +37,7 @@ export default {
       // 1.
       this.subCount(n)
     },
+    // mapmutations和mapactions是在映射方法
     ...mapMutations(['subCount', 'changeTitle']),
     ...mapActions(['changeCountAction'])
   }

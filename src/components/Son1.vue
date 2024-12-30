@@ -9,16 +9,27 @@
     <button @click="handleAdd(10)">值 + 10</button>
     <button @click="handleChange">一秒后修改为666</button>
     <button @click="changeFn">改标题</button>
+
+    <hr>
+    <div>{{ $store.state.list}}</div>
+    <div>{{ $store.getters.filterList}}</div>
+    <div>{{filterList}}</div>
+
+    <hr>
+    <div>{{$store.state.user.userInfo.name}}</div>
+    <div>{{$store.state.setting.theme}}</div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'Son1Com',
   computed: {
-    ...mapState(['count', 'title'])
+    // mapstate和maogetters是在映射属性
+    ...mapState(['count', 'title']),
+    ...mapGetters(['filterList'])
   },
   methods: {
     handleAdd (n) {
