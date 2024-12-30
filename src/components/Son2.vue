@@ -4,14 +4,15 @@
     从vuex中获取的值:
     <label>{{ count }}</label>
     <br/>
-    <button @click="handleSub(1)">值 - 1</button>
-    <button @click="handleSub(5)">值 - 5</button>
+    <button @click="subCount(1)">值 - 1</button>
+    <button @click="subCount(5)">值 - 5</button>
     <button @click="handleSub(10)">值 - 10</button>
+    <button @click="changeTitle('xxxx')">改标题</button>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'Son2Com',
@@ -23,8 +24,11 @@ export default {
   },
   methods: {
     handleSub (n) {
-      this.$store.commit('subCount', n)
-    }
+      // this.$store.commit('subCount', n)
+      // 1.
+      this.subCount(n)
+    },
+    ...mapMutations(['subCount', 'changeTitle'])
   }
 }
 </script>
