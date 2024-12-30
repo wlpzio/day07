@@ -19,8 +19,11 @@ const store = new Vuex.Store({
     addCount (state) {
       state.count += 1
     },
+    addFive (state) {
+      state.count += 5
+    },
     changeTitle (state) {
-      console.log(state.title)
+      state.title = '小标题'
     }
   }
 })

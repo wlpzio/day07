@@ -3,14 +3,16 @@
     <h2>Son1 子组件{{ title }}</h2>
     从vuex中获取的值:
     <label>{{ count }}</label>
-    <br />
+    <br/>
     <button @click="handleAdd">值 + 1</button>
-    <button @click="handleAdd">值 + 5</button>
+    <button @click="addFive">值 + 5</button>
+    <button @click="changeFn">改标题</button>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+
 export default {
   name: 'Son1Com',
   computed: {
@@ -22,6 +24,12 @@ export default {
       // this.$store.state.count++
       // 严格通过mutations解决
       this.$store.commit('addCount')
+    },
+    addFive () {
+      this.$store.commit('addFive')
+    },
+    changeFn () {
+      this.$store.commit('changeTitle')
     }
   }
 }
@@ -34,6 +42,7 @@ export default {
   padding: 10px;
   margin: 20px;
 }
+
 h2 {
   margin-top: 10px;
 }
