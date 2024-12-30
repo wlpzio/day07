@@ -7,6 +7,7 @@
     <button @click="handleAdd(1)">值 + 1</button>
     <button @click="handleAdd(5)">值 + 5</button>
     <button @click="handleAdd(10)">值 + 10</button>
+    <button @click="handleChange">一秒后修改为666</button>
     <button @click="changeFn">改标题</button>
   </div>
 </template>
@@ -35,6 +36,10 @@ export default {
     // },
     changeFn () {
       this.$store.commit('changeTitle', '黑马程序员')
+    },
+    handleChange () {
+      // 调用action
+      this.$store.dispatch('changeCountAction', 666)
     }
   }
 }

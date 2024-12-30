@@ -33,6 +33,17 @@ const store = new Vuex.Store({
     changeCount (state, newCount) {
       state.count = newCount
     }
+  },
+  // 3.actions 处理异步
+  // 注意 ：不能直接操作 state，擦欧总state海曙需要commit mutations
+  actions: {
+    // contex 上下文（此处未分模块，可以当作store仓库）
+    changeCountAction (context, num) {
+      // 这里是setTimeout模拟异步，以后大部分场景是发请求
+      setTimeout(() => {
+        context.commit('changeCount', num)
+      }, 1000)
+    }
   }
 })
 
