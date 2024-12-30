@@ -7,12 +7,13 @@
     <button @click="subCount(1)">值 - 1</button>
     <button @click="subCount(5)">值 - 5</button>
     <button @click="handleSub(10)">值 - 10</button>
+    <button @click="changeCountAction(888)">一秒后改成888</button>
     <button @click="changeTitle('xxxx')">改标题</button>
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'Son2Com',
@@ -28,7 +29,8 @@ export default {
       // 1.
       this.subCount(n)
     },
-    ...mapMutations(['subCount', 'changeTitle'])
+    ...mapMutations(['subCount', 'changeTitle']),
+    ...mapActions(['changeCountAction'])
   }
 }
 </script>
