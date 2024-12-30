@@ -4,7 +4,9 @@
     从vuex中获取的值:
     <label>{{ count }}</label>
     <br/>
-    <button @click="handleSub">值 - 1</button>
+    <button @click="handleSub(1)">值 - 1</button>
+    <button @click="handleSub(5)">值 - 5</button>
+    <button @click="handleSub(10)">值 - 10</button>
   </div>
 </template>
 
@@ -20,8 +22,8 @@ export default {
     console.log(this.$store.state.count)
   },
   methods: {
-    handleSub () {
-      console.log(this.$store.state.count)
+    handleSub (n) {
+      this.$store.commit('subCount', n)
     }
   }
 }

@@ -26,6 +26,9 @@ const store = new Vuex.Store({
     // },
     changeTitle (state, newtitle) {
       state.title = newtitle
+    },
+    subCount (state, n) {
+      state.count -= n
     }
   }
 })
