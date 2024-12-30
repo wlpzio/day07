@@ -16,14 +16,16 @@ const store = new Vuex.Store({
   },
   // 2.通过mutations可以提供修改数据的方法
   mutations: {
-    addCount (state) {
-      state.count += 1
+    // 一般都是传递一个参数，如果为多个参数就是传递对下，以下标来获取
+    addCount (state, obj) {
+      console.log(obj)
+      state.count += obj.count
     },
-    addFive (state) {
-      state.count += 5
-    },
-    changeTitle (state) {
-      state.title = '小标题'
+    // addFive (state) {
+    //   state.count += 5
+    // },
+    changeTitle (state, newtitle) {
+      state.title = newtitle
     }
   }
 })

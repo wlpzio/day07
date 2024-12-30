@@ -4,8 +4,9 @@
     从vuex中获取的值:
     <label>{{ count }}</label>
     <br/>
-    <button @click="handleAdd">值 + 1</button>
-    <button @click="addFive">值 + 5</button>
+    <button @click="handleAdd(1)">值 + 1</button>
+    <button @click="handleAdd(5)">值 + 5</button>
+    <button @click="handleAdd(10)">值 + 10</button>
     <button @click="changeFn">改标题</button>
   </div>
 </template>
@@ -19,17 +20,21 @@ export default {
     ...mapState(['count', 'title'])
   },
   methods: {
-    handleAdd () {
+    handleAdd (n) {
       // 错误代码，默认不会检查
       // this.$store.state.count++
       // 严格通过mutations解决
-      this.$store.commit('addCount')
+      console.log(n)
+      this.$store.commit('addCount', {
+        count: n,
+        msg: '哈哈'
+      })
     },
-    addFive () {
-      this.$store.commit('addFive')
-    },
+    // addFive () {
+    //   this.$store.commit('addFive')
+    // },
     changeFn () {
-      this.$store.commit('changeTitle')
+      this.$store.commit('changeTitle', '黑马程序员')
     }
   }
 }
